@@ -1,0 +1,776 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package FiltroInterfaz;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Font;
+import java.awt.Frame;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+/**
+ *
+ * @author Fercr
+ */
+public class FiltroPanel extends javax.swing.JPanel {
+    
+    private Map<String, Elemento> elementosMap = new HashMap<>();
+    private Color backgroundColor = Color.WHITE;  //color de fondo por defecto
+    private String elemento; //Sirve para definir de que tipo de elementos hablamos, ejemplo en el proyecto hablamos de tipo de sangre
+    private String razon; //Sirve para darle un sentido al atributo boolean de la clase Elemento, ejemplo en el proyecto hablamos de si es posible donar
+    
+    private String[] columnas;
+    private int[] atributosActivos; //Lo utilizamos por si el atributo de elegibilidad de la clase Elemento se utiliza
+
+    /**
+     * Creates new form FiltroPanel
+     */
+    
+    public FiltroPanel() {
+        initComponents();
+        loadElementos();
+        atributosActivos=new int[6];
+        atributosActivos[0]=0;atributosActivos[1]=1;atributosActivos[2]=2;atributosActivos[3]=3;atributosActivos[4]=4;atributosActivos[5]=5;
+        this.elemento="Elemento"; //Aquí se asigna el tipo de elemento, ejemplo en el proyecto hablamos de tipo de sangre
+        this.razon="¿Existe?";
+        setModelItem();
+       
+    }/*
+    public FiltroPanel(String element,String razonE) {
+        initComponents();
+        loadElementos();
+        atributosActivos=new int[6];
+        atributosActivos[0]=0;atributosActivos[1]=1;atributosActivos[2]=2;atributosActivos[3]=3;atributosActivos[4]=4;atributosActivos[5]=5;
+        this.elemento=element; //Aquí se asigna el tipo de elemento, ejemplo en el proyecto hablamos de tipo de sangre
+        this.razon=razonE;
+        setModelItem();
+    }
+    public FiltroPanel(String[] atributos){
+        DefaultComboBoxModel<String> cbFiltr = new DefaultComboBoxModel();
+        for(int i=0;atributos.length>i;i++){
+            if(atributos[i].toLowerCase().contains("tipo")){
+                cbFiltr.addElement(atributos[i]+elemento);
+                atributosActivos[3]=i;
+            }else if(atributos[i].toLowerCase().contains("id")){
+                cbFiltr.addElement(atributos[i]);
+                atributosActivos[0]=i;
+            }else if(atributos[i].toLowerCase().contains("nombre")){
+                cbFiltr.addElement(atributos[i]);
+                atributosActivos[1]=i;
+            }else if(atributos[i].toLowerCase().contains("fecha")){
+                cbFiltr.addElement(atributos[i]);
+                atributosActivos[2]=i;
+            }else if(atributos[i].toLowerCase().contains("direcci")){
+                cbFiltr.addElement(atributos[i]);
+                atributosActivos[4]=i;
+            }else if(atributos[i].toLowerCase().contains("elegib")){
+                cbFiltr.addElement(atributos[i]);
+                atributosActivos[5]=i;
+            }
+            
+        }
+        columnas=atributos;
+        comboFiltro.setModel(cbFiltr);
+    }*/
+    private void setModelItem(){
+        //Usamos este metodo para añadir manualmente los elementos en el ombobox
+        //La razón es para que en el tipo de elemento se agregue el que se vaya a utilizar
+        /*DefaultComboBoxModel<String> cbFiltr = new DefaultComboBoxModel();
+        
+        cbFiltr.addElement("ID");
+        cbFiltr.addElement("Nombre");
+        cbFiltr.addElement("Fecha");
+        cbFiltr.addElement("Tipo de Elemento");
+        cbFiltr.addElement("Direccion");
+        cbFiltr.addElement("Elegible");
+        comboFiltro.setModel(cbFiltr);*/
+        columnas=new String[6];
+        columnas[0]="ID";
+        columnas[1]="Nombre";
+        columnas[2]="Fecha";
+        columnas[3]="Tipo de Elemento";
+        columnas[4]="Direccion";
+        columnas[5]="Elegible"; //No moverle al nombre de la columna en ninguna circunstancia
+    }
+    
+    private void loadElementos() {
+        //limpiar lo datos del mapa para recargar datos
+        elementosMap.clear();
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        txtBuscar = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultArea = new javax.swing.JTextArea();
+        comboFiltro = new javax.swing.JComboBox<>();
+        btnPersonalizar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnAgregarElemento = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnCargar = new javax.swing.JButton();
+        btnCSV = new javax.swing.JButton();
+        reiniciarMapeo = new javax.swing.JButton();
+
+        setToolTipText("Filtro de Busqueda");
+
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        resultArea.setEditable(false);
+        resultArea.setColumns(20);
+        resultArea.setRows(5);
+        jScrollPane1.setViewportView(resultArea);
+
+        comboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Nombre", "Fecha", "Tipo de Elemento", "Direccion", "Elegible" }));
+        comboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboFiltroActionPerformed(evt);
+            }
+        });
+
+        btnPersonalizar.setText("Personalizar");
+        btnPersonalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonalizarActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Cerrar");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Filtrar por:");
+
+        jLabel2.setText("Resultado de la búsqueda:");
+
+        btnAgregarElemento.setText("Agregar elemento");
+        btnAgregarElemento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarElementoActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Ingrese la información:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setText("Filtro de Búsqueda");
+
+        btnCargar.setText("Cargar datos");
+        btnCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarActionPerformed(evt);
+            }
+        });
+
+        btnCSV.setText("Guardar CSV");
+        btnCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCSVActionPerformed(evt);
+            }
+        });
+
+        reiniciarMapeo.setText("Limpiar Datos");
+        reiniciarMapeo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reiniciarMapeoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnPersonalizar)
+                        .addGap(18, 18, 18)
+                        .addComponent(reiniciarMapeo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(comboFiltro, 0, 202, Short.MAX_VALUE)
+                                .addGap(17, 17, 17)
+                                .addComponent(btnBuscar)
+                                .addGap(18, 18, 18))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 153, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnAgregarElemento)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btnCargar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(112, 112, 112))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCSV))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnSalir)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(166, 166, 166))))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBuscar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarElemento)
+                    .addComponent(btnCargar)
+                    .addComponent(btnCSV))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnPersonalizar)
+                    .addComponent(btnSalir)
+                    .addComponent(reiniciarMapeo))
+                .addContainerGap())
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:  
+ 
+        String criterio = (String) comboFiltro.getSelectedItem();
+        String valor = txtBuscar.getText();
+        actualizarFiltrado(criterio, valor);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void comboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboFiltroActionPerformed
+
+         //se obtiene el criterio del ComboBox
+        String seleccionado = (String) comboFiltro.getSelectedItem();
+
+        //limpiar el txtBuscar
+        txtBuscar.setText("");
+        resultArea.setText("");
+        
+        //mostrar un mensaje o hacer ajustes en la interfaz según la selección
+        if(seleccionado.toLowerCase().contains("id")||seleccionado.toLowerCase().contains("nombre")||seleccionado.toLowerCase().contains("direcci")||seleccionado.toLowerCase().contains("elegib")){
+            JOptionPane.showMessageDialog(this, "Filtrado por "+seleccionado+" seleccionado.");
+        }else if(seleccionado.toLowerCase().contains("fecha")){
+            JOptionPane.showMessageDialog(this, "Filtrado por fecha seleccionado.");
+            DialogoFecha dialogoFecha = new DialogoFecha((Frame) SwingUtilities.getWindowAncestor(this),true);
+            dialogoFecha.setVisible(true);
+            String fecha = dialogoFecha.getFecha();
+            txtBuscar.setText(fecha);
+        }else if(seleccionado.toLowerCase().contains("tipo")){
+            JOptionPane.showMessageDialog(this, "Filtrado por tipo de "+elemento+" seleccionado.");
+            ElementoDialog elementoDialog = new ElementoDialog((Frame) SwingUtilities.getWindowAncestor(this), true);
+            elementoDialog.setVisible(true);
+
+            //al cerrar el dialog, se obtiene el tipo de elemento
+            String tipoElemento = elementoDialog.getElemento();
+            if (tipoElemento != null) {
+                txtBuscar.setText(tipoElemento);
+            }
+        }
+    }//GEN-LAST:event_comboFiltroActionPerformed
+
+    private void btnPersonalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalizarActionPerformed
+        // TODO add your handling code here:
+        ConfigDialog configDialog = new ConfigDialog(JFrame.getFrames()[0], true, this);
+        configDialog.setVisible(true);
+
+    }//GEN-LAST:event_btnPersonalizarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
+        if (frame != null) {
+            frame.dispose();
+        }
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnAgregarElementoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarElementoActionPerformed
+        
+        String id="";
+        String nombre="";
+        String fecha="";
+        String tipoElemento="";
+        String direccion="";
+        boolean esElegible=false;
+        //obtener datos del usuario
+        if(atributosActivos[0]>-1){
+        id = JOptionPane.showInputDialog(this, "Ingrese ID del elemento:");
+        if (id == null || id.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El ID del elemento es obligatorio.");
+            return;
+        }}
+        if(atributosActivos[1]>-1){
+        nombre = JOptionPane.showInputDialog(this, "Ingrese nombre del elemento:");
+        if (nombre == null || nombre.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre del elemento es obligatorio.");
+            return;
+        }}
+        
+        if(atributosActivos[2]>-1){
+        DialogoFecha dialogoFecha = new DialogoFecha((Frame) SwingUtilities.getWindowAncestor(this),true);
+        dialogoFecha.setVisible(true);
+        fecha = dialogoFecha.getFecha();
+        if (dialogoFecha.getBotonPulsado() == 1) {
+            JOptionPane.showMessageDialog(this, "Se cancelo la entrada de fecha.");
+            return;
+        }}
+        
+        if(atributosActivos[3]>-1){
+        ElementoDialog elementoDialog = new ElementoDialog((Frame) SwingUtilities.getWindowAncestor(this),true);
+        elementoDialog.setVisible(true);
+        tipoElemento = elementoDialog.getElemento();
+        if (tipoElemento == null || tipoElemento.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El tipo de "+elemento+" es obligatorio.");
+            return;
+        }}
+        
+        if(atributosActivos[4]>-1){
+        direccion = JOptionPane.showInputDialog(this, "Ingrese la dirección:");
+        if (direccion == null || direccion.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "La dirección es obligatoria.");
+            return;
+        }}
+        
+        if(atributosActivos[5]>-1){
+        //cuadro de dialogo con respuestas si/no, ejemplo: "¿Es elegible para donar?", esto lo contiene la variable global razon
+        int respuesta = JOptionPane.showConfirmDialog(this, razon, "Elegible", JOptionPane.YES_NO_OPTION);
+        
+        // evaluar la respuesta
+        esElegible = (respuesta == JOptionPane.YES_OPTION);
+        }
+
+
+        // Intentar agregar el elemento al sistema
+        try {
+            if (elementosMap.containsKey(id)) {
+                JOptionPane.showMessageDialog(this, "Un elemento con este ID ya existe.");
+            } else {
+                Elemento nuevoElemento = new Elemento(id, nombre, fecha, tipoElemento, direccion, esElegible);
+                elementosMap.put(id, nuevoElemento);
+                JOptionPane.showMessageDialog(this, "Elemento agregado exitosamente!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error de formato de fecha, no se agregó el elemento.");
+        }
+    }//GEN-LAST:event_btnAgregarElementoActionPerformed
+
+    private void btnCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarActionPerformed
+        // TODO add your handling code here:
+        JFileChooser archE = new JFileChooser();
+        archE.setDialogTitle("Seleccione un archivo SCV.");
+        int res = archE.showOpenDialog(this);
+        if (res == JFileChooser.APPROVE_OPTION){
+            File archSelec = archE.getSelectedFile();
+            leerDatos(archSelec.getAbsolutePath());
+        }
+    }//GEN-LAST:event_btnCargarActionPerformed
+
+    private void btnCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCSVActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Guardar CSV");
+
+        // Filtrar para mostrar solo archivos CSV
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos CSV *.csv)", ".csv");
+        fileChooser.setFileFilter(filter);
+
+        
+        // Establecer la extensión predeterminada
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fileChooser.setSelectedFile(new File("datos.csv"));
+        // Mostrar el cuadro de diálogo
+        int userSelection = fileChooser.showSaveDialog(this);
+        
+
+        // Si el usuario elige un archivo y hace clic en "Guardar"
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            // Obtener el archivo seleccionado por el usuario
+            File selectedFile = fileChooser.getSelectedFile();
+            String csvFile = selectedFile.getAbsolutePath();
+            
+             if (!csvFile.toLowerCase().endsWith(".csv")) {
+                csvFile += ".csv"; }
+
+            try {
+                // Crear un FileWriter para escribir en el archivo CSV
+                FileWriter writer = new FileWriter(csvFile);
+                String atributos="";
+                for(int i=0;columnas.length-1>i;i++){
+                    atributos=atributos+columnas[i]+",";
+                }
+                atributos=atributos+columnas[columnas.length-1];
+                // Escribir la cabecera del archivo CSV (opcional)
+                writer.append(atributos+"\n");
+
+                // Iterar sobre las entradas del HashMap y escribir en el archivo CSV
+                for (Elemento element : elementosMap.values()) {
+                    writer.append(formatElemento(element));
+                }
+
+                // Cerrar el FileWriter
+                writer.flush();
+                writer.close();
+
+                System.out.println("El archivo CSV se ha creado correctamente.");
+
+                // Abrir el directorio donde se guardó el archivo
+                Desktop.getDesktop().open(selectedFile.getParentFile());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+}
+    }//GEN-LAST:event_btnCSVActionPerformed
+
+    private void reiniciarMapeoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reiniciarMapeoActionPerformed
+        loadElementos();
+        txtBuscar.setText("");
+        resultArea.setText("");
+    }//GEN-LAST:event_reiniciarMapeoActionPerformed
+
+    private void actualizarFiltrado(String criterio, String valor){
+        JOptionPane.showMessageDialog(this, "Filtrando por: " + criterio + " con valor: " + valor);
+        
+        StringBuilder resultado = new StringBuilder();
+        boolean elementoEncontrado = false;
+        
+        if(valor == null || valor.trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese un valor para buscar.");
+            return;
+        }
+        
+        if(criterio.toLowerCase().contains("id")){
+            Elemento element = elementosMap.get(valor);
+            if (element != null) {
+                resultado.append(formatElemento(element));
+                elementoEncontrado = true;
+            }
+        }else{
+            for(Elemento element : elementosMap.values()){
+                if(criterio.toLowerCase().contains("nombre")){
+                    if(element.getNombre().toLowerCase().contains(valor.toLowerCase())) {
+                            resultado.append(formatElemento(element));
+                            elementoEncontrado = true;
+                        }
+                }
+                else if(criterio.toLowerCase().contains("fecha")){
+                    try{
+                            if (element.getFecha().equals(valor)) {
+                                resultado.append(formatElemento(element));
+                                elementoEncontrado = true;
+                            }
+                        }catch(Exception e){
+                            resultado.append("Fecha no valida.");
+                        }
+                }
+                else if(criterio.toLowerCase().contains("direcci")){
+                    if(element.getDireccion().toLowerCase().contains(valor.toLowerCase())) {
+                            resultado.append(formatElemento(element));
+                            elementoEncontrado = true;
+                        }
+                }
+                else if(criterio.toLowerCase().contains("elegib")){
+                    boolean elegible = "Si".equals(valor);
+                        if(element.isElegible() == elegible) {
+                            resultado.append(formatElemento(element));
+                            elementoEncontrado = true;
+                        }
+                }
+                else if(criterio.toLowerCase().contains("tipo")){
+                        if(element.getTipo().toLowerCase().equals(valor.toLowerCase())) {
+                            resultado.append(formatElemento(element));
+                            elementoEncontrado = true;
+                        }
+                }
+            }
+        }
+        
+        if(!elementoEncontrado){
+            resultado.append("No se encontraron coincidencias.");
+        }
+        
+        resultArea.setText(resultado.toString()); //muestra los resultados en el TextArea
+
+        
+        
+    }
+   
+    
+    public void setPanelFont(String fontName, int fontSize) {
+        
+        Font newFont = new Font(fontName, Font.PLAIN, fontSize);
+        this.setFont(newFont);
+        for (Component comp : getComponents()) {
+            comp.setFont(newFont);
+        }
+        revalidate();  //actualizar el layout con los nuevos tamaños de fuente
+        repaint();     //redibuja el panel para mostrar los cambios
+    }
+
+    
+    public void setPanelFontSize(int fontSize) {
+        Font currentFont = this.getFont();
+        Font newFont = currentFont.deriveFont((float) fontSize);
+        setFont(newFont);  //cambia la fuente del panel
+        for (Component comp : getComponents()) {
+            comp.setFont(newFont);  //cambia la fuente de cada componente
+        }
+        revalidate();
+        repaint();
+    }
+    
+    
+    public void setComponentsColor(Color color) {
+        for (Component comp : getComponents()) {
+            if (comp instanceof JTextField || comp instanceof JButton || comp instanceof JComboBox) {
+                comp.setBackground(color);
+            } else if (comp instanceof JScrollPane) {
+                JScrollPane scrollPane = (JScrollPane) comp;
+                Component view = scrollPane.getViewport().getView();
+
+                if (view instanceof JTextArea) {
+                    JTextArea textArea = (JTextArea) view;
+                    textArea.setBackground(color);
+                    textArea.setOpaque(true);
+                }
+
+                scrollPane.getViewport().setBackground(color);
+                scrollPane.getViewport().setOpaque(true);
+            }
+        }
+        repaint();  // Repintar el panel para asegurar los cambios
+    }
+
+
+    public Color getComponentsColor() {
+        return backgroundColor;  //retorna el color almacenado
+    }
+    
+    
+    private String formatElemento(Elemento elemento){
+        String texto="";
+        for(int i=0;columnas.length-1>i;i++){
+            if(atributosActivos[0]==i) texto=texto+elemento.getId();
+            else if(atributosActivos[1]==i) texto=texto+elemento.getNombre();
+            else if(atributosActivos[2]==i) texto=texto+elemento.getFecha();
+            else if(atributosActivos[3]==i) texto=texto+elemento.getTipo();
+            else if(atributosActivos[4]==i) texto=texto+elemento.getDireccion();
+            else if(atributosActivos[5]==i) texto=texto+String.valueOf(elemento.isElegible());
+            texto=texto+", ";
+        }
+        if(atributosActivos[0]==columnas.length-1) texto=texto+elemento.getId();
+            else if(atributosActivos[1]==columnas.length-1) texto=texto+elemento.getNombre();
+            else if(atributosActivos[2]==columnas.length-1) texto=texto+elemento.getFecha();
+            else if(atributosActivos[3]==columnas.length-1) texto=texto+elemento.getTipo();
+            else if(atributosActivos[4]==columnas.length-1) texto=texto+elemento.getDireccion();
+            else if(atributosActivos[5]==columnas.length-1) texto=texto+String.valueOf(elemento.isElegible());
+        return texto+"\n";
+    }
+    private void leerDatos(String rutaArchivo) {
+        try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
+
+            String linea;
+            int pid=-1,pnombre=-1,pfecha=-1,ptipo=-1,pdireccion=-1,peleccion=-1;
+            String[] column=null;
+            
+            if ((linea = br.readLine()) != null){
+                String[] linea1 = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                column=new String[linea1.length];
+                for(int i=0;linea1.length>i;i++){
+                    if(linea1[i].toLowerCase().contains("id")){
+                        pid=i;
+                        column[i]=linea1[i];
+                    }
+                    else if(linea1[i].toLowerCase().contains("nombre")){
+                        pnombre=i;
+                        column[i]=linea1[i];
+                    }
+                    else if(linea1[i].toLowerCase().contains("fecha")){
+                        pfecha=i;
+                        column[i]=linea1[i];
+                    }
+                    else if(linea1[i].toLowerCase().contains("tipo")){
+                        ptipo=i;
+                        column[i]=linea1[i];
+                    }
+                    else if(linea1[i].toLowerCase().contains("direcci")){
+                        pdireccion=i;
+                        column[i]=linea1[i];
+                    }
+                    else if(linea1[i].toLowerCase().contains("elegib")){
+                        peleccion=i;
+                        column[i]=linea1[i];
+                    }
+                }
+            }
+            boolean ordenColumnas=false;
+            if(columnas!=null){        
+            if(columnas.length==column.length){
+                for(int i=0;columnas.length>i;i++){
+                    if(columnas[i].toLowerCase().equals(column[i].toLowerCase())){
+                        ordenColumnas=true;
+                    } else{
+                        ordenColumnas=false;
+                        i=columnas.length;
+                    }
+                }
+            }}
+            if(elementosMap.isEmpty()||ordenColumnas){
+                atributosActivos[0]=atributosActivos[1]=atributosActivos[2]=atributosActivos[3]=atributosActivos[4]=atributosActivos[5]=-1;
+            while ((linea = br.readLine()) != null) {
+                String[] datos = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+                String id="";
+                if(pid>-1){
+                    id = datos[pid].trim();
+                    atributosActivos[0]=pid;
+                }
+                
+                String nombre="";
+                if(pnombre>-1){
+                    nombre= datos[pnombre].trim();
+                    atributosActivos[1]=pnombre;
+                }
+                
+                String fecha="";
+                if(pfecha>-1){
+                    fecha=datos[pfecha].trim();
+                    atributosActivos[2]=pfecha;
+                }
+                
+                String tipoElemento="";
+                if(ptipo>-1){
+                    tipoElemento=datos[ptipo].trim();
+                    atributosActivos[3]=ptipo;
+                }
+                
+                String direccion="";
+                if(pdireccion>-1){
+                    direccion= datos[pdireccion].trim().replace("\"", "");
+                    atributosActivos[4]=pdireccion;
+                }
+                
+                boolean elegible=false;
+                if(peleccion>-1){
+                    elegible= Boolean.parseBoolean(datos[peleccion].trim());
+                    atributosActivos[5]=peleccion;
+                }
+                //agregar elementos
+                Elemento nuevoElemento = new Elemento(id, nombre, fecha, tipoElemento, direccion, elegible);
+                elementosMap.put(id, nuevoElemento);
+            }
+            JOptionPane.showMessageDialog(this, "Datos cargados exitosamente.");
+            columnas=column;
+            /*DefaultComboBoxModel<String> cbFiltr = new DefaultComboBoxModel();
+            for(int i=0;columnas.length>i;i++){
+                if(columnas[i].equals("Tipo de ")){
+                    cbFiltr.addElement(columnas[i]+elemento);
+                }else cbFiltr.addElement(columnas[i]);
+            }*/
+            
+            FiltrosAgregados filtro=new FiltrosAgregados((Frame) SwingUtilities.getWindowAncestor(this), true);
+            filtro.setCombo(columnas,elemento);
+            filtro.setVisible(true);
+            //comboFiltro.setModel(filtro.getCombo());
+            //filtro.getCombo();
+            comboFiltro.setModel(filtro.getCombo());
+            }
+            else JOptionPane.showMessageDialog(this, "El nombre de las columnas y/o el orden de estas, no corresponde con las columnas dentro del CSV.");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Error al leer el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al procesar el archivo.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarElemento;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCSV;
+    private javax.swing.JButton btnCargar;
+    private javax.swing.JButton btnPersonalizar;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JComboBox<String> comboFiltro;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton reiniciarMapeo;
+    private javax.swing.JTextArea resultArea;
+    private javax.swing.JTextField txtBuscar;
+    // End of variables declaration//GEN-END:variables
+}
