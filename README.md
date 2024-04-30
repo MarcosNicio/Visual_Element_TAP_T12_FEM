@@ -122,6 +122,8 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 1. Haz clic en "Cargar datos" en la interfaz principal.
 2. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
 3. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
+   
+![Captura de pantalla 2024-04-27 214813](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3d737975-c410-4b9a-bda6-7d5f8ab9f52d)
 
 ### Uso
 
