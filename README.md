@@ -1,4 +1,4 @@
-[donantes.csv](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/files/15158617/donantes.csv)# FILTRADOR DE BUSQUEDA DE ARCHIVOS
+# FILTRADOR DE BUSQUEDA DE ARCHIVOS
 
 ## Descripción
 
@@ -126,28 +126,7 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 3. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
 5. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
 
-**Puedes utilizar este archivo .csv para probar el codigo:**[UpID,Nombre,Fecha Última Donación,Tipo de Sangre,Dirección,Elegible
-1,Margaret Duncan,20/07/2022,B-,"Unit 0938 Box 6461, DPO AA 95363",True
-2,Christina Cooley,15/12/2023,A+,"13028 Stephanie Villages Suite 710, Larsonfurt, CO 94182",False
-3,Brian Burns,08/05/2023,B+,"370 Flores Lodge Suite 903, North Thomasside, IA 79828",True
-4,Jennifer Andrews,05/05/2023,B+,"699 Tracy Circles Apt. 177, New Michaeltown, FL 25198",False
-5,Ms. Jennifer Mitchell,10/04/2023,AB-,"884 Foster Estate Apt. 814, East Johnview, OH 67893",False
-6,Cameron Marks,16/07/2022,A-,"USNS Nguyen, FPO AE 91172",True
-7,Cory Galvan,11/04/2023,A-,"6865 Dawn Place Apt. 527, South Jenna, WA 34377",False
-8,Kristina Greene,15/05/2023,AB-,"555 Hammond Manors Apt. 033, North Andrewmouth, OR 67774",False
-9,Cynthia Wheeler,24/11/2023,AB+,"099 Rodriguez Plain Suite 994, Donaldfurt, HI 17609",True
-10,Monica Hopkins,11/12/2023,O+,"974 Kimberly Ville, Ericshire, NH 20014",True
-11,Leslie Allen,21/04/2023,O+,"5240 Bryant Junctions Apt. 525, Patrickton, PR 62760",False
-12,Daniel Green,12/10/2023,A+,"275 Myers Junction, West Mallorymouth, MI 83901",True
-13,Derek Allen,11/04/2023,B+,"98275 Devin Landing, Elizabethville, IA 75790",True
-14,Dr. Makayla Nielsen MD,27/12/2023,B+,"0341 Blake Keys, Millerton, OK 90123",False
-15,Richard Robinson,08/06/2023,AB+,"95597 John Harbors Apt. 016, Donaldside, WY 44884",False
-16,Jeremy Morris,13/12/2023,B-,"PSC 3379, Box 1141, APO AP 24284",True
-17,Amanda Torres,07/07/2022,O-,"USCGC Day, FPO AA 27729",True
-18,Helen Rangel,08/04/2023,A-,"187 Gary Tunnel Apt. 438, Chavezchester, AZ 49096",False
-19,Patricia Mack,31/08/2023,A+,"433 Dana Vista Suite 106, Rojaschester, WI 17126",True
-20,Peter Lamb,25/10/2023,B+,"66201 Orr Ports Apt. 250, East Daniellechester, HI 42365",False
-loading donantes.csv…]()
+**Puedes utilizar este archivo .csv para probar el codigo:**[donantes.csv](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/files/15158617/donantes.csv)
 
 
 
