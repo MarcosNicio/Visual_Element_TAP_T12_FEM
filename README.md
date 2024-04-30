@@ -122,13 +122,13 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 #### Cargar datos desde Archivo CSV
 
 1. Haz clic en "Cargar datos" en la interfaz principal.
-2. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
-3. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
-   
-![Captura de pantalla 2024-04-27 214813](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3d737975-c410-4b9a-bda6-7d5f8ab9f52d)
-![Captura de pantalla 2024-04-27 215029](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/e20a6cec-671d-4a19-8407-4209c2fbe312)
-![Captura de pantalla 2024-04-27 215122](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/854da10f-d603-404e-b6cf-adf11c686e88)
-![Captura de pantalla 2024-04-27 215344](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/f52cd550-b626-4b6c-8fcf-cd05022db588)
+3. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
+   ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
+5. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
+   ![Captura de pantalla 2024-04-27 213707](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/9309357e-e60d-4d8c-b0a0-138f90a77bc0)
+
+
+
 
 
 ### Uso
@@ -136,6 +136,10 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 - **Agregación del .jar al documento:** Creamos un proyecto y añadimos nuestro elemento visual arrastrándolo.
 - **Lectura del archivo CSV:** Ejecutamos y probamos con un archivo CSV seleccionando los filtros que queremos ocupar (ID, Nombre y Elegible).
 - **Exportación de los elementos a CSV:** Presionamos el botón "Guardar CSV" y seleccionamos dónde queremos guardar el archivo y el nombre que deseamos.
+  ![Captura de pantalla 2024-04-27 214813](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3d737975-c410-4b9a-bda6-7d5f8ab9f52d)
+  ![Captura de pantalla 2024-04-27 215029](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/e20a6cec-671d-4a19-8407-4209c2fbe312)
+  ![Captura de pantalla 2024-04-27 215122](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/854da10f-d603-404e-b6cf-adf11c686e88)
+  ![Captura de pantalla 2024-04-27 215344](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/f52cd550-b626-4b6c-8fcf-cd05022db588)
 
 ### Muestra de Funcionamiento
 
