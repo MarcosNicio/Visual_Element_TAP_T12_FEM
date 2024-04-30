@@ -137,6 +137,8 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
   ![Captura de pantalla 2024-04-27 210142](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3cd79671-c3c3-4ef0-ad69-6a7b40e4b276)
   ![Captura de pantalla 2024-04-27 212224](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/2bfc4084-988f-4d2e-a800-4d1cf6d55e83)
   ![Captura de pantalla 2024-04-27 212305](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/f44a828c-da05-434f-988f-a42a81f38044)
+
+  **NOTA: EL ARCHIVO .jar SE ENCUENTRA EN LA CARPETA DIST DEL PROYECTO
   
 - **Lectura del archivo CSV:** Ejecutamos y probamos con un archivo CSV seleccionando los filtros que queremos ocupar (ID, Nombre y Elegible).
   ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
