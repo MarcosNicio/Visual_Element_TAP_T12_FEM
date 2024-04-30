@@ -105,6 +105,7 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 1. Haz clic en el botón "Agregar elemento" en la interfaz principal.
 2. Completa los campos en el formulario emergente, incluyendo ID, nombre, fecha de última donación, tipo de sangre, dirección y elegibilidad.
 
+
 #### Buscar y Filtrar Datos
 
 1. Introduce el criterio de búsqueda en la barra de texto txtBuscar.
@@ -123,10 +124,8 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 
 1. Haz clic en "Cargar datos" en la interfaz principal.
 3. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
-   ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
 5. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
-   ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
-   ![Captura de pantalla 2024-04-27 213707](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/9309357e-e60d-4d8c-b0a0-138f90a77bc0)
+
 
 
 
@@ -135,7 +134,13 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 ### Uso
 
 - **Agregación del .jar al documento:** Creamos un proyecto y añadimos nuestro elemento visual arrastrándolo.
+  ![Captura de pantalla 2024-04-27 210142](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3cd79671-c3c3-4ef0-ad69-6a7b40e4b276)
+  ![Captura de pantalla 2024-04-27 212224](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/2bfc4084-988f-4d2e-a800-4d1cf6d55e83)
+  ![Captura de pantalla 2024-04-27 212305](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/f44a828c-da05-434f-988f-a42a81f38044)
 - **Lectura del archivo CSV:** Ejecutamos y probamos con un archivo CSV seleccionando los filtros que queremos ocupar (ID, Nombre y Elegible).
+  ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
+  ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
+  ![Captura de pantalla 2024-04-27 213707](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/9309357e-e60d-4d8c-b0a0-138f90a77bc0)
 - **Exportación de los elementos a CSV:** Presionamos el botón "Guardar CSV" y seleccionamos dónde queremos guardar el archivo y el nombre que deseamos.
   ![Captura de pantalla 2024-04-27 214813](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3d737975-c410-4b9a-bda6-7d5f8ab9f52d)
   ![Captura de pantalla 2024-04-27 215029](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/e20a6cec-671d-4a19-8407-4209c2fbe312)
