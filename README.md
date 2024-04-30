@@ -125,6 +125,7 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 3. Navega y selecciona el archivo CSV desde el diálogo de archivos que aparece.
    ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
 5. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
+   ![Captura de pantalla 2024-04-27 213655](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/a1c06f4f-2734-45ec-b1a1-c6240026ba7b)
    ![Captura de pantalla 2024-04-27 213707](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/9309357e-e60d-4d8c-b0a0-138f90a77bc0)
 
 
