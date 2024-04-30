@@ -111,11 +111,13 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 2. Selecciona el tipo de filtro que deseas aplicar desde el menú desplegable comboFiltro.
 3. Haz clic en "Buscar" para procesar la búsqueda y ver los resultados en el área resultArea.
 
+
 #### Personalización de la Interfaz
 
 1. Selecciona "Personalizar" en la interfaz principal para abrir la ventana de configuración.
 2. Ajusta el color de fondo, el tipo y tamaño de fuente según tus preferencias.
 3. Haz clic en "Aplicar cambios" para guardar los ajustes o en "Regresar" para cancelar sin guardar los cambios.
+
 
 #### Cargar datos desde Archivo CSV
 
@@ -124,6 +126,10 @@ Este componente visual permite filtrar diferentes columnas en un archivo CSV, ta
 3. Confirma la selección y espera mientras la aplicación carga los datos del archivo al sistema.
    
 ![Captura de pantalla 2024-04-27 214813](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/3d737975-c410-4b9a-bda6-7d5f8ab9f52d)
+![Captura de pantalla 2024-04-27 215029](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/e20a6cec-671d-4a19-8407-4209c2fbe312)
+![Captura de pantalla 2024-04-27 215122](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/854da10f-d603-404e-b6cf-adf11c686e88)
+![Captura de pantalla 2024-04-27 215344](https://github.com/MarcosNicio/Visual_Element_TAP_T12_FEM/assets/168311933/f52cd550-b626-4b6c-8fcf-cd05022db588)
+
 
 ### Uso
 
